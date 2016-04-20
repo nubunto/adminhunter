@@ -1,0 +1,115 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Algo deu errado! Cheque os erros abaixo.</p>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>Dados do Cliente</legend>
+    <div class="form-group">
+      <%= label f, :name, "Nome", class: "control-label" %>
+      <%= text_input f, :name, class: "form-control" %>
+      <%= error_tag f, :name %>
+    </div>
+
+    <div class="form-group">
+      <%= label f, :type, "Tipo", class: "control-label" %>
+      <%= text_input f, :type, class: "form-control" %>
+      <%= error_tag f, :type %>
+    </div>
+
+    <div class="form-group">
+      <%= label f, :social_reason, "Razão Social", class: "control-label" %>
+      <%= text_input f, :social_reason, class: "form-control" %>
+      <%= error_tag f, :social_reason %>
+    </div>
+
+    <div class="form-group">
+      <%= label f, :cpf, "CPF", class: "control-label" %>
+      <%= text_input f, :cpf, class: "form-control" %>
+      <%= error_tag f, :cpf %>
+    </div>
+
+    <div class="form-group">
+      <%= label f, :cnpj, "CNPJ", class: "control-label" %>
+      <%= text_input f, :cnpj, class: "form-control" %>
+      <%= error_tag f, :cnpj %>
+    </div>
+
+    <div class="form-group">
+      <%= label f, :observation, "Observação", class: "control-label" %>
+      <%= text_input f, :observation, class: "form-control" %>
+      <%= error_tag f, :observation %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Endereço</legend>
+    <%= inputs_for f, :address, fn i -> %>
+      <div class="form-group">
+        <%# TODO: gettext? %>
+        <%= label i, :address, "Endereço", class: "control-label" %>
+        <%= text_input i, :address, class: "form-control" %>
+        <%= error_tag i, :address %>
+      </div>
+
+      <%# TODO: gettext? %>
+      <div class="form-group">
+        <%= label i, :number, "Número", class: "control-label" %>
+        <%= number_input i, :number, class: "form-control" %>
+        <%= error_tag i, :number %>
+      </div>
+
+      <%# TODO: gettext? %>
+      <div class="form-group">
+        <%= label i, :complement, "Complemento", class: "control-label" %>
+        <%= text_input i, :complement, class: "form-control" %>
+        <%= error_tag i, :complement %>
+      </div>
+
+      <%# TODO: gettext? %>
+      <div class="form-group">
+        <%= label i, :neighborhood, "Bairro", class: "control-label" %>
+        <%= text_input i, :neighborhood, class: "form-control" %>
+        <%= error_tag i, :neighborhood %>
+      </div>
+
+      <%# TODO: gettext? %>
+      <div class="form-group">
+        <%= label i, :city, "Cidade", class: "control-label" %>
+        <%= text_input i, :city, class: "form-control" %>
+        <%= error_tag i, :city %>
+      </div>
+
+      <%# TODO: gettext? %>
+      <div class="form-group">
+        <%= label i, :postal_code, "CEP", class: "control-label" %>
+        <%= text_input i, :postal_code, class: "form-control" %>
+        <%= error_tag i, :postal_code %>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Contato</legend>
+    <%= inputs_for f, :contact, fn i -> %>
+      <div class="form-group">
+        <%= label i, :name, "Nome do contato", class: "control-label" %>
+        <%= text_input i, :name, class: "form-control" %>
+        <%= error_tag i, :name %>
+      </div>
+
+      <div class="form-group">
+        <%= label i, :cell_phone, "Celular", class: "control-label" %>
+        <%= text_input i, :cell_phone, class: "form-control" %>
+        <%= error_tag i, :name %>
+      </div>
+    <% end %>
+  </fieldset>
+
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

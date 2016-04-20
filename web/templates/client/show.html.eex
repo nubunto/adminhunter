@@ -1,0 +1,38 @@
+<h2>Mostrar Cliente</h2>
+
+<ul>
+
+  <li>
+    <strong>Nome:</strong>
+    <%= @client.name %>
+  </li>
+
+  <li>
+    <strong>Tipo:</strong>
+    <%= @client.type %>
+  </li>
+
+  <li>
+    <strong>Razão Social:</strong>
+    <%= @client.social_reason %>
+  </li>
+
+  <li>
+    <strong>CPF:</strong>
+    <%= @client.cpf %>
+  </li>
+
+  <li>
+    <strong>CNPJ:</strong>
+    <%= @client.cnpj %>
+  </li>
+
+  <li>
+    <strong>Observação:</strong>
+    <%= @client.observation %>
+  </li>
+
+</ul>
+
+<%= link "Editar", class: "btn btn-primary", to: client_path(@conn, :edit, @client) %>
+<%= link "Voltar", class: "btn btn-default", to: client_path(@conn, :index) %>

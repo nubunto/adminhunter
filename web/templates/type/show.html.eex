@@ -1,0 +1,18 @@
+<h2>Mostrar Setor</h2>
+
+<ul>
+
+  <li>
+    <strong>Nome</strong>
+    <%= @type.name %>
+  </li>
+
+  <li>
+    <strong>Limite:</strong>
+    <%= @type.limit %>
+  </li>
+
+</ul>
+
+<%= link "Editar", class: "btn btn-primary", to: type_path(@conn, :edit, @type) %>
+<%= link "Voltar", class: "btn btn-default", to: type_path(@conn, :index) %>

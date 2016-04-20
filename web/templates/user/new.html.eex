@@ -1,0 +1,8 @@
+<h2>Novo Usuário</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: user_path(@conn, :create),
+                        types: @types,
+                        error: assigns[:error] %>
+
+<%= link "Voltar", class: "btn btn-default", to: user_path(@conn, :index) %>

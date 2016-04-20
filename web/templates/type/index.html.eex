@@ -1,0 +1,22 @@
+<h2>Setores</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Limite</th>
+      <th>Cadastrados</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for type <- @type do %>
+    <tr>
+      <td><%= type.name %></td>
+      <td><%= type.limit %></td>
+      <td><%= if Ecto.assoc_loaded?(type.users), do: Enum.count(type.users) %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Um aplicativo dedicado para administração de contratos de propaganda">
+    <meta name="author" content="Bruno Panuto <thepanuto@gmail.com>">
+
+    <title>Hello Adminhunter!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="<%= page_path(@conn, :index)%>">Adminhunter</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="<%= client_path(@conn, :index)%>">Clientes</a></li>
+            <li><a href="<%= user_path(@conn, :index)%>">Usuários</a></li>
+            <li><a href="<%= type_path(@conn, :index)%>">Setores</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+    </div> <!-- /container -->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
