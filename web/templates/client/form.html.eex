@@ -5,111 +5,166 @@
     </div>
   <% end %>
 
-  <fieldset>
-    <legend>Dados do Cliente</legend>
-    <div class="form-group">
-      <%= label f, :name, "Nome", class: "control-label" %>
-      <%= text_input f, :name, class: "form-control" %>
-      <%= error_tag f, :name %>
+  <div class="panel-group" id="new-client-form">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="new-client-form" href="#clientData">Dados do Cliente</a>
+        </h4>
+      </div>
+      <div id="clientData" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="form-group">
+            <%= label f, :name, "Nome", class: "control-label" %>
+            <%= text_input f, :name, class: "form-control" %>
+            <%= error_tag f, :name %>
+          </div>
+
+          <div class="form-group">
+            <%= label f, :type, "Tipo", class: "control-label" %>
+            <%= text_input f, :type, class: "form-control" %>
+            <%= error_tag f, :type %>
+          </div>
+
+          <div class="form-group">
+            <%= label f, :social_reason, "Razão Social", class: "control-label" %>
+            <%= text_input f, :social_reason, class: "form-control" %>
+            <%= error_tag f, :social_reason %>
+          </div>
+
+          <div class="form-group">
+            <%= label f, :cpf, "CPF", class: "control-label" %>
+            <%= text_input f, :cpf, class: "form-control" %>
+            <%= error_tag f, :cpf %>
+          </div>
+
+          <div class="form-group">
+            <%= label f, :cnpj, "CNPJ", class: "control-label" %>
+            <%= text_input f, :cnpj, class: "form-control" %>
+            <%= error_tag f, :cnpj %>
+          </div>
+
+          <div class="form-group">
+            <%= label f, :observation, "Observação", class: "control-label" %>
+            <%= text_input f, :observation, class: "form-control" %>
+            <%= error_tag f, :observation %>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= label f, :type, "Tipo", class: "control-label" %>
-      <%= text_input f, :type, class: "form-control" %>
-      <%= error_tag f, :type %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="new-form-control" href="#contactData">Contato</a>
+        </h4>
+      </div>
+      <div id="contactData" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <%= inputs_for f, :contact, fn i -> %>
+            <div class="form-group">
+              <%= label i, :name, "Nome do contato", class: "control-label" %>
+              <%= text_input i, :name, class: "form-control" %>
+              <%= error_tag i, :name %>
+            </div>
+
+            <div class="form-group">
+              <%= label i, :emails, "Emails", class: "control-label" %>
+              <div id="emails">
+                  <%= for email <- @client.contact.emails do %>
+                  <div class="input-group">
+                    <input type="email" name="client[contact][emails][]" class="form-control" value="<%= email %>"/>
+                    <a role="button" class="input-group-addon remove-grp">&nbsp;-</a>
+                  </div>
+                  <% end %>
+                  <a role="button" id="email-add" class="btn btn-default">+</a>
+              </div>
+              <%= error_tag i, :emails %>
+            </div>
+
+            <div class="form-group">
+              <%= label i, :phones, "Telefones", class: "control-label" %>
+              <div id="phones">
+                <%= for phone <- @client.contact.phones do %>
+                <div class="input-group">
+                  <input data-id="<%=phone%>" type="phone" name="client[contact][phones][]" class="form-control" value="<%= phone %>" />
+                  <a role="button" class="input-group-addon remove-grp">&nbsp;-</a>
+                </div>
+                <% end %>
+                <a role="button" id="phone-add" class="btn btn-default">+</a>
+              </div>
+              <%= error_tag i, :phones %>
+            </div>
+
+            <div class="form-group">
+              <%= label i, :cell_phone, "Celular", class: "control-label" %>
+              <%= telephone_input i, :cell_phone, class: "form-control" %>
+              <%= error_tag i, :name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="new-client-form" href="#addressData">Endereço</a>
+        </h4>
+      </div>
+      <div id="addressData" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <%= inputs_for f, :address, fn i -> %>
+            <div class="form-group">
+              <%# TODO: gettext? %>
+              <%= label i, :address, "Endereço", class: "control-label" %>
+              <%= text_input i, :address, class: "form-control" %>
+              <%= error_tag i, :address %>
+            </div>
 
-    <div class="form-group">
-      <%= label f, :social_reason, "Razão Social", class: "control-label" %>
-      <%= text_input f, :social_reason, class: "form-control" %>
-      <%= error_tag f, :social_reason %>
+            <%# TODO: gettext? %>
+            <div class="form-group">
+              <%= label i, :number, "Número", class: "control-label" %>
+              <%= number_input i, :number, class: "form-control" %>
+              <%= error_tag i, :number %>
+            </div>
+
+            <%# TODO: gettext? %>
+            <div class="form-group">
+              <%= label i, :complement, "Complemento", class: "control-label" %>
+              <%= text_input i, :complement, class: "form-control" %>
+              <%= error_tag i, :complement %>
+            </div>
+
+            <%# TODO: gettext? %>
+            <div class="form-group">
+              <%= label i, :neighborhood, "Bairro", class: "control-label" %>
+              <%= text_input i, :neighborhood, class: "form-control" %>
+              <%= error_tag i, :neighborhood %>
+            </div>
+
+            <%# TODO: gettext? %>
+            <div class="form-group">
+              <%= label i, :city, "Cidade", class: "control-label" %>
+              <%= text_input i, :city, class: "form-control" %>
+              <%= error_tag i, :city %>
+            </div>
+
+            <%# TODO: gettext? %>
+            <div class="form-group">
+              <%= label i, :postal_code, "CEP", class: "control-label" %>
+              <%= text_input i, :postal_code, class: "form-control" %>
+              <%= error_tag i, :postal_code %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-
-    <div class="form-group">
-      <%= label f, :cpf, "CPF", class: "control-label" %>
-      <%= text_input f, :cpf, class: "form-control" %>
-      <%= error_tag f, :cpf %>
-    </div>
-
-    <div class="form-group">
-      <%= label f, :cnpj, "CNPJ", class: "control-label" %>
-      <%= text_input f, :cnpj, class: "form-control" %>
-      <%= error_tag f, :cnpj %>
-    </div>
-
-    <div class="form-group">
-      <%= label f, :observation, "Observação", class: "control-label" %>
-      <%= text_input f, :observation, class: "form-control" %>
-      <%= error_tag f, :observation %>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Endereço</legend>
-    <%= inputs_for f, :address, fn i -> %>
-      <div class="form-group">
-        <%# TODO: gettext? %>
-        <%= label i, :address, "Endereço", class: "control-label" %>
-        <%= text_input i, :address, class: "form-control" %>
-        <%= error_tag i, :address %>
-      </div>
-
-      <%# TODO: gettext? %>
-      <div class="form-group">
-        <%= label i, :number, "Número", class: "control-label" %>
-        <%= number_input i, :number, class: "form-control" %>
-        <%= error_tag i, :number %>
-      </div>
-
-      <%# TODO: gettext? %>
-      <div class="form-group">
-        <%= label i, :complement, "Complemento", class: "control-label" %>
-        <%= text_input i, :complement, class: "form-control" %>
-        <%= error_tag i, :complement %>
-      </div>
-
-      <%# TODO: gettext? %>
-      <div class="form-group">
-        <%= label i, :neighborhood, "Bairro", class: "control-label" %>
-        <%= text_input i, :neighborhood, class: "form-control" %>
-        <%= error_tag i, :neighborhood %>
-      </div>
-
-      <%# TODO: gettext? %>
-      <div class="form-group">
-        <%= label i, :city, "Cidade", class: "control-label" %>
-        <%= text_input i, :city, class: "form-control" %>
-        <%= error_tag i, :city %>
-      </div>
-
-      <%# TODO: gettext? %>
-      <div class="form-group">
-        <%= label i, :postal_code, "CEP", class: "control-label" %>
-        <%= text_input i, :postal_code, class: "form-control" %>
-        <%= error_tag i, :postal_code %>
-      </div>
-    <% end %>
-  </fieldset>
-
-  <fieldset>
-    <legend>Contato</legend>
-    <%= inputs_for f, :contact, fn i -> %>
-      <div class="form-group">
-        <%= label i, :name, "Nome do contato", class: "control-label" %>
-        <%= text_input i, :name, class: "form-control" %>
-        <%= error_tag i, :name %>
-      </div>
-
-      <div class="form-group">
-        <%= label i, :cell_phone, "Celular", class: "control-label" %>
-        <%= text_input i, :cell_phone, class: "form-control" %>
-        <%= error_tag i, :name %>
-      </div>
-    <% end %>
-  </fieldset>
+  </div>
 
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit "Salvar", class: "btn btn-primary" %>
   </div>
 <% end %>
