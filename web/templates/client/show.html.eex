@@ -1,38 +1,112 @@
-<h2>Mostrar Cliente</h2>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="accordion" href="#clientData">Dados do Cliente</a>
+      </h4>
+    </div>
+    <div id="clientData" class="panel-collapse collapse in">
+      <div class="list-group">
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Nome</h4>
+          <p class="list-group-item-text"><%= @client.name %></p>
+        </a>
 
-<ul>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Tipo</h4>
+          <p class="list-group-item-text"><%= @client.type %></p>
+        </a>
 
-  <li>
-    <strong>Nome:</strong>
-    <%= @client.name %>
-  </li>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Razão Social</h4>
+          <p class="list-group-item-text"><%= @client.social_reason %></p>
+        </a>
 
-  <li>
-    <strong>Tipo:</strong>
-    <%= @client.type %>
-  </li>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">CPF</h4>
+          <p class-"list-group-item-text"><%= @client.cpf %></p>
+        </a>
 
-  <li>
-    <strong>Razão Social:</strong>
-    <%= @client.social_reason %>
-  </li>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">CNPJ:</h4>
+          <p class="list-group-item-text"><%= @client.cnpj %></p>
+        </a>
 
-  <li>
-    <strong>CPF:</strong>
-    <%= @client.cpf %>
-  </li>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Observação:</h4>
+          <p class="list-group-item-text"><%= @client.observation %></p>
+        </a>
+      </div><!-- .list-group -->
+    </div>
+  </div><!-- .panel.panel-default -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="accordion" href="#contactData">Contato</a>
+      </h4>
+    </div>
+    <div id="contactData" class="panel-collapse collapse in">
+      <div class="list-group">
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Nome do contato</h4>
+          <p class="list-group-item-body"><%= @client.contact.name %></p>
+        </a>
+        <%= for phone <- @client.contact.phones do %>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Telefone</h4>
+          <p class="list-group-item-body"><%= phone %></p>
+        </a>
+        <% end %>
+        <%= for email <- @client.contact.emails do %>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Email</h4>
+          <p class="list-group-item-body"><%= email %></p>
+        </a>
+      <% end %>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Telefone celular</h4>
+          <p class="list-group-item-body"><%= @client.contact.cell_phone %></p>
+        </a>
+      </div><!-- .list-group -->
+    </div><!-- #contactData -->
+  </div><!-- .panel.panel-default -->
 
-  <li>
-    <strong>CNPJ:</strong>
-    <%= @client.cnpj %>
-  </li>
-
-  <li>
-    <strong>Observação:</strong>
-    <%= @client.observation %>
-  </li>
-
-</ul>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="accordion" href="#addressData">Endereço</a>
+      </h4>
+    </div>
+    <div id="addressData" class="panel-collapse collapse in">
+      <div class="list-group">
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Endereço</h4>
+          <p class="list-group-item-body"><%= @client.address.address %></p>
+        </a>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Número</h4>
+          <p class="list-group-item-body"><%= @client.address.number %></p>
+        </a>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Complemento</h4>
+          <p class="list-group-item-body"><%= @client.address.complement %></p>
+        </a>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Bairro</h4>
+          <p class="list-group-item-body"><%= @client.address.neighborhood %></p>
+        </a>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">CEP</h4>
+          <p class="list-group-item-body"><%= @client.address.postal_code %></p>
+        </a>
+        <a class="list-group-item">
+          <h4 class="list-group-item-heading">Cidade</h4>
+          <p class="list-group-item-body"><%= @client.address.city %></p>
+        </a>
+      </div><!-- .list-group -->
+    </div><!-- #addressData -->
+  </div><!-- .panel.panel-default -->
+</div>
 
 <%= link "Editar", class: "btn btn-primary", to: client_path(@conn, :edit, @client) %>
 <%= link "Voltar", class: "btn btn-default", to: client_path(@conn, :index) %>
