@@ -7,7 +7,7 @@
     <meta name="description" content="Um aplicativo dedicado para administração de contratos de propaganda">
     <meta name="author" content="Bruno Panuto <thepanuto@gmail.com>">
 
-    <title>Hello Adminhunter!</title>
+    <title>Adminhunter</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
