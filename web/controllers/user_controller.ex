@@ -24,7 +24,7 @@ defmodule Adminhunter.UserController do
 
   def create(conn, %{"user" => user_params}) do
     type =
-      Repo.get!(Type, user_params["v_type"])
+      Repo.get!(Type, user_params["type_id"])
       |> Repo.preload(:users)
     cond do
       Enum.count(type.users) + 1 > type.limit ->
