@@ -3,4 +3,4 @@
 <%= render "form.html", changeset: @changeset,
                         action: client_path(@conn, :create) %>
 
-<%= link "Back", to: client_path(@conn, :index) %>
+<%= link "Voltar", class: "btn btn-default", to: client_path(@conn, :index) %>
