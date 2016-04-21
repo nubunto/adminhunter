@@ -5,9 +5,6 @@
     <tr>
       <th>Nome</th>
       <th>Tipo</th>
-      <th>Razão Social</th>
-      <th>CPF</th>
-      <th>CNPJ</th>
       <th>Observação</th>
 
       <th></th>
@@ -18,9 +15,6 @@
     <tr>
       <td><%= client.name %></td>
       <td><%= client.type %></td>
-      <td><%= client.social_reason %></td>
-      <td><%= client.cpf %></td>
-      <td><%= client.cnpj %></td>
       <td><%= client.observation %></td>
 
       <td class="text-right">
@@ -33,4 +27,4 @@
   </tbody>
 </table>
 
-<%= link "Novo Cliente", class: "btn btn-primary", to: client_path(@conn, :new) %>
+<%= link "Novo", class: "btn btn-primary", to: client_path(@conn, :new) %>
