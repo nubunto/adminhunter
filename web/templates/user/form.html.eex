@@ -17,6 +17,12 @@
   <fieldset>
     <legend>Dados de Usuário</legend>
     <div class="form-group">
+      <%= label f, :name, "Nome", class: "control-label" %>
+      <%= text_input f, :name, class: "form-control" %>
+      <%= error_tag f, :name %>
+    </div>
+
+    <div class="form-group">
       <%= label f, :email, class: "control-label" %>
       <%= text_input f, :email, class: "form-control" %>
       <%= error_tag f, :email %>
@@ -35,9 +41,9 @@
     </div>
 
     <div class="form-group">
-      <%= label f, :v_type, "Tipo", class: "control-label" %>
-      <%= select f, :v_type, @types, class: "form-control" %>
-      <%= error_tag f, :v_type %>
+      <%= label f, :type_id, "Tipo", class: "control-label" %>
+      <%= select f, :type_id, @types, class: "form-control" %>
+      <%= error_tag f, :type_id %>
     </div>
   </fieldset>
 
