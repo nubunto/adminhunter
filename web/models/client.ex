@@ -9,8 +9,8 @@ defmodule Adminhunter.Client do
     field :cnpj, :string
     field :observation, :string
 
-    embeds_one :address, Adminhunter.Address
-    embeds_one :contact, Adminhunter.Contact
+    embeds_one :address, Adminhunter.Address, on_replace: :delete
+    embeds_one :contact, Adminhunter.Contact, on_replace: :delete
 
     timestamps
   end
